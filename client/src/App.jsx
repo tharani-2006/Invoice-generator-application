@@ -1,13 +1,16 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage/LandingPage'
 import DashBoard from './pages/DashBoard'
 import PreviewPage from './pages/PreviewPage'
+import MenuBar from './components/MenuBar'
+import Toaster from "react-hot-toast"
+import MainPage from './pages/MainPage'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Menubar />
+      <MenuBar />
       <Toaster />
       <Routes>
           <Route path="/" element={<LandingPage />} />
