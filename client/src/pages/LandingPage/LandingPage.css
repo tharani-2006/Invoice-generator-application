@@ -1,0 +1,475 @@
+.landing-hero {
+  background-color: #0D6EFD;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.landing-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.landing-hero p {
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.btn-generate {
+  background-color: #FFC107;
+  color: #000;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-generate:hover {
+  background-color: #FFB300;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+  color: #000;
+}
+
+.btn-learn-more {
+  background-color: transparent;
+  color: #0D6EFD;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: 2px solid white;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-learn-more:hover {
+  background-color: orange ;
+  color: #0D6EFD;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .landing-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .landing-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .btn-generate,
+  .btn-learn-more {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Get Started Section */
+.get-started-section {
+  background-color: white;
+  padding: 80px 0;
+}
+
+.get-started-section h2 {
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+/* Step Cards */
+.step-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* card1 - Enter Details */
+.card1 {
+  background-color: #E3F2FD;
+}
+
+/* card2 - Choose Template */
+.card2 {
+  background-color: #E8F5E9;
+}
+
+/* card3 - Preview Invoice */
+.card3 {
+  background-color: #FFF9C4;
+}
+
+/* card4 - Download & Save */
+.card4 {
+  background-color: #E0F7FA;
+}
+
+/* Step Icons */
+.step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+/* step-icon-1 - Blue */
+.step-icon-1 {
+  background-color: #0D6EFD;
+}
+
+/* step-icon-2 - Dark Green */
+.step-icon-2 {
+  background-color: #198754;
+}
+
+/* step-icon-3 - Orange/Yellow */
+.step-icon-3 {
+  background-color: #FF9800;
+}
+
+/* step-icon-4 - Light Blue/Cyan */
+.step-icon-4 {
+  background-color: #00BCD4;
+}
+
+/* Step Title */
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Step Description */
+.step-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Responsive Design for Steps */
+@media (max-width: 768px) {
+  .get-started-section {
+    padding: 60px 0;
+  }
+  
+  .get-started-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .step-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .step-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .step-title {
+    font-size: 1.25rem;
+  }
+  
+  .step-description {
+    font-size: 0.95rem;
+  }
+}
+
+/* Features Section */
+.feature-section {
+  background-color: white;
+  padding: 80px 0;
+}
+
+.feature-section.bg-light {
+  background-color: #f8f9fa;
+}
+
+.feature-main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0D6EFD;
+  margin-bottom: 3rem;
+}
+
+.feature-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.feature-image-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.feature-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.feature-content {
+  padding: 2rem 0;
+}
+
+.feature-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.feature-description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.feature-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #0D6EFD;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.feature-highlight {
+  background-color: #E3F2FD;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Design for Features */
+@media (max-width: 768px) {
+  .feature-section {
+    padding: 60px 0;
+  }
+  
+  .feature-main-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .feature-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-list li {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .feature-content {
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+  }
+  
+  .feature-image-wrapper {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Call to Action Section */
+.cta-section {
+  background-color: #0D6EFD;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.cta-description {
+  font-size: 1.25rem;
+  color: white;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-cta {
+  background-color: #FFC107;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 16px 48px;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-cta:hover {
+  background-color: #FFB300;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
+  color: #000;
+}
+
+.cta-subtext {
+  font-size: 0.95rem;
+  color: white;
+  opacity: 0.9;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* Responsive Design for CTA */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 80px 0;
+  }
+  
+  .cta-title {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .cta-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-cta {
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .cta-subtext {
+    font-size: 0.9rem;
+  }
+}
+
+/* Footer Section */
+.footer-section {
+  background-color: #212529;
+  padding: 60px 0 40px;
+  color: white;
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-brand-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.footer-copyright {
+  font-size: 0.95rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: white;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 50px 0 30px;
+  }
+  
+  .footer-logo-img {
+    height: 50px;
+  }
+  
+  .footer-brand-name {
+    font-size: 1.5rem;
+  }
+  
+  .footer-copyright {
+    font-size: 0.9rem;
+  }
+  
+  .footer-tagline {
+    font-size: 0.85rem;
+  }
+}
+
