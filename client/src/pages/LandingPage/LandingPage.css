@@ -450,6 +450,27 @@
   margin-bottom: 0;
 }
 
+.footer-social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-social-link:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
 /* Responsive Design for Footer */
 @media (max-width: 768px) {
   .footer-section {
@@ -470,6 +491,14 @@
   
   .footer-tagline {
     font-size: 0.85rem;
+  }
+  
+  .footer-social-icons {
+    gap: 0.75rem;
+  }
+  
+  .footer-social-link {
+    font-size: 0.9rem;
   }
 }
 

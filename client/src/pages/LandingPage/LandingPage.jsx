@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './LandingPage.css'
 import { assets } from '../../assets/assets'
+import { Twitter, Facebook, Linkedin } from 'lucide-react'
 
 const LandingPage = () => {
   return (
@@ -237,6 +238,17 @@ const LandingPage = () => {
               <p className="footer-tagline">
                 Crafted for freelancers and small businesses.
               </p>
+              <div className="footer-social-icons mt-3">
+                <a href="#" className="footer-social-link me-3" aria-label="Twitter">
+                  <Twitter size={24} />
+                </a>
+                <a href="#" className="footer-social-link me-3" aria-label="Facebook">
+                  <Facebook size={24} />
+                </a>
+                <a href="#" className="footer-social-link" aria-label="LinkedIn">
+                  <Linkedin size={24} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
