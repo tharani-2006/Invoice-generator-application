@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import { Pencil } from 'lucide-react'
 import { AppContext } from '../context/AppContext'
+import InvoiceForm from '../components/InvoiceForm'
 
 const MainPage = () => {
 
@@ -23,7 +24,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <div className="container-fluid bg-light min-vh-100 py-4">
+      <div className="mainpage container-fluid bg-light min-vh-100 py-4">
         <div className="container">
 
           {/* Title Bar */}
@@ -56,7 +57,7 @@ const MainPage = () => {
             {/*  Invoice Form */}
             <div className="col-12 col-lg-6 d-flex flex-column">
               <div className="bg-white border rounded shadow-sm p-4 w-100 h-100">
-                invoice form
+                <InvoiceForm />
               </div>
             </div>
 

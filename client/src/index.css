@@ -17,7 +17,8 @@
 .spin-animation{
   animation : spin 1s linear infinite;
 }
-
+/* this is for remove the border shadow blue of input box */
+.mainpage input:focus, 
 .invoiceform input:focus,
 .invoiceform textarea:focus,
 .invoiceform select:focus {
