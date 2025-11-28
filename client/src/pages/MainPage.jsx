@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { Pencil } from 'lucide-react'
 import { AppContext } from '../context/AppContext'
 import InvoiceForm from '../components/InvoiceForm'
+import TemplateGrid from '../components/TemplateGrid'
 
 const MainPage = () => {
 
@@ -64,7 +65,7 @@ const MainPage = () => {
             {/* Template Grid */}
             <div className="col-12 col-lg-6 d-flex flex-column">
               <div className="bg-white border rounded shadow-sm p-4 w-100 h-100">
-                template grid
+                <TemplateGrid />
               </div>
             </div>
           </div>
