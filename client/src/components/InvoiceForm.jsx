@@ -36,6 +36,25 @@ const InvoiceForm = () => {
         }))
     }
 
+    const handleItemChange = (index,field,value) => {
+        const items = [...invoiceData.items]
+        items[index][field] = value;
+        if(field == "qty" || field == "amount"){
+            items[index].total = (items[index].qty || 0) * (items[index].amount || 0)
+        }
+        setInvoiceData((prev) => ({ ...prev, items}))
+    }
+
+    const calculateTotals = () => {
+        const subTotal = invoiceData.items.reduce((sum,item) => sum + (item.total || 0) , 0)
+        const taxRate = Number(invoiceData.tax || 0)
+        const taxAmount = (subTotal * taxRate) / 100
+        const grandTotal = subTotal + taxAmount
+        return { subTotal, taxAmount, grandTotal }
+    }
+
+    const { subTotal, taxAmount, grandTotal } = calculateTotals()
+
     return (
         <div className="invoiceform container py-4">
 
@@ -166,15 +185,35 @@ const InvoiceForm = () => {
                 <div className="row g-3">
                     <div className="col-md-4">
                         <label htmlFor="invoiceNumber" className="form-label">Invoice Number</label>
-                        <input type="text" disabled id='invoiceNumber' className='form-control' placeholder='Invoice Number' />
+                        <input 
+                            type="text" 
+                            disabled 
+                            id='invoiceNumber' 
+                            className='form-control' 
+                            placeholder='Invoice Number' 
+                            onChange={(e) => handleChange("invoice","number",e.target.value)}
+                            value={invoiceData.invoice.number}
+                        />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="invoiscDate" className="form-label">Invoice Date</label>
-                        <input type="date" className='form-control' id='invoiceDate' />
+                        <input 
+                            type="date" 
+                            className='form-control' 
+                            id='invoiceDate' 
+                            onChange={(e) => handleChange("invoice","date",e.target.value)}
+                            value={invoiceData.invoice.date}
+                        />
                     </div>
                     <div className="col-md-4">
                         <label htmlFor="invoiceDueDate" className="form-label">Invoice Due Date</label>
-                        <input type="date" className='form-control' id='invoiceDueDate' />
+                        <input 
+                            type="date"     
+                            className='form-control' 
+                            id='invoiceDueDate' 
+                            onChange={(e) => handleChange("invoice","dueDate",e.target.value)}
+                            value={invoiceData.invoice.dueDate}
+                        />
                     </div>
                 </div>
             </div>
@@ -186,20 +225,49 @@ const InvoiceForm = () => {
                     <div key={index} className="card p-3 md-3">
                         <div className="row g-3 mb-2">
                             <div className="col-md-3">
-                                <input type="text" className='form-control' placeholder='Item Name' />
+                                <input 
+                                    type="text" 
+                                    className='form-control' 
+                                    placeholder='Item Name' 
+                                    value={item.name}
+                                    onChange={(e) => handleChange(index,"name",e.target.value )}
+                                />
                             </div>
                             <div className="col-md-3">
-                                <input type="number" className="form-control" placeholder='qty' />
+                                <input 
+                                    type="number" 
+                                    className="form-control" 
+                                    placeholder='qty' 
+                                    value={item.qty}
+                                    onChange={(e) => handleChange(index,"qty",e.target.value )}
+                                />
                             </div>
                             <div className="col-md-3">
-                                <input type="number" placeholder='Amount' className='form-control' />
+                                <input 
+                                    type="number" 
+                                    placeholder='Amount' 
+                                    className='form-control' 
+                                    value={item.amount}
+                                    onChange={(e) => handleChange(index,"amount",e.target.value )}
+                                />
                             </div>
                             <div className="col-md-3">
-                                <input type="number" placeholder='Total' className='form-control' />
+                                <input 
+                                    type="number" 
+                                    placeholder='Total' 
+                                    className='form-control' 
+                                    value={item.total}
+                                    disabled
+                                 />
                             </div>
                         </div>
                         <div className="d-flex gap-2">
-                            <textarea placeholder='Description' className="form-control"></textarea>
+                            <textarea 
+                                placeholder='Description' 
+                                className="form-control"
+                                value={item.description}
+                                onChange={(e) => handleChange(index,"description",e.target.value )}
+                            ></textarea>
                             {invoiceData.items.length > 1 && (
                                 <button className="btn btn-outline-danger" type='button' onClick={() => deleteItem(index)}>
                                     <Trash2 size={18} />
@@ -216,13 +284,29 @@ const InvoiceForm = () => {
                 <h5>Bank Account Details</h5>
                 <div className="row g-3">
                     <div className="col-md-4">
-                        <input type="text" className='form-control' placeholder='Account Name' />
+                        <input 
+                            type="text" 
+                            className='form-control' 
+                            placeholder='Account Name' 
+                            value={invoiceData.account.name}
+                            onChange={(e) => handleChange("account","name",e.target.value )}
+                        />
                     </div>
                     <div className="col-md-4">
-                        <input type="text" className='form-control' placeholder='Account Number' />
+                        <input 
+                            type="text" 
+                            className='form-control' 
+                            placeholder='Account Number' 
+                            onChange={(e) => handleChange("account","number",e.target.value )}
+                        />
                     </div>
                     <div className="col-md-4">
-                        <input type="text" className='form-control' placeholder='Branch/IFSC Code' />
+                        <input 
+                            type="text" 
+                            className='form-control' 
+                            placeholder='Branch/IFSC Code' 
+                            onChange={(e) => handleChange("account","ifsccode",e.target.value )}
+                        />
                     </div>
                 </div>
             </div>
@@ -234,19 +318,28 @@ const InvoiceForm = () => {
                     <div className="w-100 w-md-50">
                         <div className="d-flex justify-content-between">
                             <span>SubTotal</span>
-                            <span>${1000.00}</span>
+                            <span>${subTotal.toFixed(2)}</span>
                         </div>
                         <div className="d-flex justify-content-between align-items-center my-2">
                             <label htmlFor="taxInput" className="me-2">Tax Rate(%)</label>
-                            <input type="number" name="" id="taxInput" className='form-control text-end w-50' placeholder='2' />
+                            <input 
+                                type="number" 
+                                name="" 
+                                id="taxInput" 
+                                className='form-control 
+                                text-end w-50' 
+                                placeholder='2' 
+                                value={invoiceData.tax}
+                                onChange={(e) => setInvoiceData((prev) => ({...prev, tax: e.target.value }))} // 
+                            />
                         </div>
                         <div className="d-flex justify-content-between">
                             <span>Tax Amount</span>
-                            <span>${1000.00}</span>
+                            <span>${taxAmount.toFixed(2)}</span>
                         </div>
                         <div className="d-flex justify-content-between mt-2 fw-bold">
                             <span>Grand Amount</span>
-                            <span>${1000.00}</span>
+                            <span>${grandTotal.toFixed(2)}</span>
                         </div>
                     </div>
                 </div>
@@ -255,7 +348,14 @@ const InvoiceForm = () => {
             {/* Notes */}
             <div className="mb-4">
                 <h5>Notes:</h5>
-                <textarea name="notes" className='form-control' rows={3} ></textarea>
+                <textarea 
+                    name="notes" 
+                    className='form-control' 
+                    rows={3} 
+                    value={invoiceData.notes}
+                    onChange={(e) => setInvoiceData((prev) => ({...prev, notes: e.target.value }))}
+                >
+                </textarea>
             </div>
         </div>
     )
