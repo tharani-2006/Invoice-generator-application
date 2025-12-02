@@ -1,4 +1,4 @@
-import React, { use, useContext } from 'react'
+import React, { use, useContext,useEffect } from 'react'
 import { assets } from '../assets/assets.js'
 import { Trash2 } from 'lucide-react'
 import { AppContext } from '../context/AppContext.jsx'
@@ -36,13 +36,33 @@ const InvoiceForm = () => {
         }))
     }
 
-    const handleItemChange = (index,field,value) => {
-        const items = [...invoiceData.items]
-        items[index][field] = value;
-        if(field == "qty" || field == "amount"){
-            items[index].total = (items[index].qty || 0) * (items[index].amount || 0)
+    const handleItemChange = (index, field, value) => {
+        const items = [...invoiceData.items];
+    
+        // convert to number for qty and amount
+        const val = field === "qty" || field === "amount" ? Number(value) : value;
+    
+        items[index][field] = val;
+    
+        if (field === "qty" || field === "amount") {
+            const qty = Number(items[index].qty) || 0;
+            const amount = Number(items[index].amount) || 0;
+            items[index].total = qty * amount;
         }
-        setInvoiceData((prev) => ({ ...prev, items}))
+    
+        setInvoiceData((prev) => ({ ...prev, items }));
+    };
+    
+
+    const handleLogoUpload = (e) => { 
+        const file = e.target.files[0]
+        if(file){
+            const reader = new FileReader()
+            reader.onload = (e) => {
+                setInvoiceData((prev) => ({...prev, logo: e.target.result}))
+            }
+            reader.readAsDataURL(file)
+        }
     }
 
     const calculateTotals = () => {
@@ -55,6 +75,17 @@ const InvoiceForm = () => {
 
     const { subTotal, taxAmount, grandTotal } = calculateTotals()
 
+    useEffect(() => {
+        if(!invoiceData.invoice.number){
+            const randomNumber = `INV-${Math.floor(100000 + Math.random() * 90000)}`
+            setInvoiceData((prev) => ({...prev, invoice: {...prev.invoice, number: randomNumber}}))
+        }
+    },[])
+
+    const handleSubmit = () => {
+        console.log(invoiceData)
+    }
+
     return (
         <div className="invoiceform container py-4">
 
@@ -63,9 +94,17 @@ const InvoiceForm = () => {
                 <h5>Company Logo</h5>
                 <div className="d-flex align-items-center gap-3">
                     <label htmlFor="image" className="form-label">
-                        <img src={assets.upload_area} alt="upload" width={98} />
+                        <img src={invoiceData.logo ? invoiceData.logo : assets.upload_area} alt="upload" width={98} />
                     </label>
-                    <input type="file" name="logo" id="image" hidden className='form-control' accept='image/*' />
+                    <input 
+                        type="file" 
+                        name="logo" 
+                        id="image" 
+                        hidden 
+                        className='form-control' 
+                        accept='image/*' 
+                        onChange={handleLogoUpload}
+                    />
                 </div>
             </div>
 
@@ -190,7 +229,6 @@ const InvoiceForm = () => {
                             disabled 
                             id='invoiceNumber' 
                             className='form-control' 
-                            placeholder='Invoice Number' 
                             onChange={(e) => handleChange("invoice","number",e.target.value)}
                             value={invoiceData.invoice.number}
                         />
@@ -230,7 +268,7 @@ const InvoiceForm = () => {
                                     className='form-control' 
                                     placeholder='Item Name' 
                                     value={item.name}
-                                    onChange={(e) => handleChange(index,"name",e.target.value )}
+                                    onChange={(e) => handleItemChange(index,"name",e.target.value )}
                                 />
                             </div>
                             <div className="col-md-3">
@@ -239,7 +277,7 @@ const InvoiceForm = () => {
                                     className="form-control" 
                                     placeholder='qty' 
                                     value={item.qty}
-                                    onChange={(e) => handleChange(index,"qty",e.target.value )}
+                                    onChange={(e) => handleItemChange(index,"qty",e.target.value )}
                                 />
                             </div>
                             <div className="col-md-3">
@@ -248,7 +286,7 @@ const InvoiceForm = () => {
                                     placeholder='Amount' 
                                     className='form-control' 
                                     value={item.amount}
-                                    onChange={(e) => handleChange(index,"amount",e.target.value )}
+                                    onChange={(e) => handleItemChange(index,"amount",e.target.value )}
                                 />
                             </div>
                             <div className="col-md-3">
@@ -266,7 +304,7 @@ const InvoiceForm = () => {
                                 placeholder='Description' 
                                 className="form-control"
                                 value={item.description}
-                                onChange={(e) => handleChange(index,"description",e.target.value )}
+                                onChange={(e) => handleItemChange(index,"description",e.target.value )}
                             ></textarea>
                             {invoiceData.items.length > 1 && (
                                 <button className="btn btn-outline-danger" type='button' onClick={() => deleteItem(index)}>
@@ -330,7 +368,7 @@ const InvoiceForm = () => {
                                 text-end w-50' 
                                 placeholder='2' 
                                 value={invoiceData.tax}
-                                onChange={(e) => setInvoiceData((prev) => ({...prev, tax: e.target.value }))} // 
+                                onChange={(e) => setInvoiceData((prev) => ({...prev, tax: Number(e.target.value) }))} 
                             />
                         </div>
                         <div className="d-flex justify-content-between">
@@ -357,6 +395,7 @@ const InvoiceForm = () => {
                 >
                 </textarea>
             </div>
+            <button onClick={handleSubmit}>Submit</button>
         </div>
     )
 }

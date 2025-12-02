@@ -3,20 +3,38 @@ import { Pencil } from 'lucide-react'
 import { AppContext } from '../context/AppContext'
 import InvoiceForm from '../components/InvoiceForm'
 import TemplateGrid from '../components/TemplateGrid'
+import toast from 'react-hot-toast'
 
 const MainPage = () => {
 
   const [isEditingTitle, setIsEditingTitle] = useState(false)
 
-  const { invoiceTitle, setInvoiceTitle } = useContext(AppContext)
+  const { invoiceTitle, setInvoiceTitle, invoiceData, setInvoiceData, setSelectedTemplate } = useContext(AppContext)
+
+  const handleTemplateClick = (templateId) => {
+    const hasInvalidItem = invoiceData.items.some(
+      (item) =>
+        !item.name.trim() ||          // empty name
+        Number(item.qty) <= 0 ||      // qty empty or zero
+        Number(item.amount) <= 0      // amount empty or zero
+    )
+
+
+    if (hasInvalidItem) {
+      toast.error("Please fill in all the fields for each item")
+      return
+    }
+    setSelectedTemplate(templateId)
+  }
 
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
     setInvoiceTitle(newTitle)
+    setInvoiceData((prev) => ({ ...prev, title: newTitle }))
   }
 
   const handleTitleEdit = () => {
-    setIsEditingTitle(true) 
+    setIsEditingTitle(true)
   }
   // this to return the pencil icon again after entering the input
   const handleTitleBlur = () => {
@@ -38,7 +56,7 @@ const MainPage = () => {
                   onBlur={handleTitleBlur} // this to return the pencil icon again after entering the input
                   onChange={handleTitleChange}
                   value={invoiceTitle}
-                /> 
+                />
               ) : (
                 <>
                   <h5 className='mb-0 me-2'>{invoiceTitle}</h5>
@@ -65,7 +83,7 @@ const MainPage = () => {
             {/* Template Grid */}
             <div className="col-12 col-lg-6 d-flex flex-column">
               <div className="bg-white border rounded shadow-sm p-4 w-100 h-100">
-                <TemplateGrid />
+                <TemplateGrid onTemplateClick={handleTemplateClick} />
               </div>
             </div>
           </div>
