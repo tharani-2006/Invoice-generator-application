@@ -4,7 +4,7 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import DashBoard from './pages/DashBoard'
 import PreviewPage from './pages/PreviewPage'
 import MenuBar from './components/MenuBar'
-import Toaster from "react-hot-toast"
+import {Toaster} from "react-hot-toast"
 import MainPage from './pages/MainPage'
 
 const App = () => {

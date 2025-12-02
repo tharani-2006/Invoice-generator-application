@@ -4,8 +4,11 @@ import { AppContext } from '../context/AppContext'
 import InvoiceForm from '../components/InvoiceForm'
 import TemplateGrid from '../components/TemplateGrid'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const MainPage = () => {
+
+  const navigate = useNavigate()
 
   const [isEditingTitle, setIsEditingTitle] = useState(false)
 
@@ -24,7 +27,10 @@ const MainPage = () => {
       toast.error("Please fill in all the fields for each item")
       return
     }
+    console.log("Items:", invoiceData.items);
+
     setSelectedTemplate(templateId)
+    navigate('/preview')
   }
 
   const handleTitleChange = (e) => {
@@ -52,7 +58,7 @@ const MainPage = () => {
               {isEditingTitle ? (
                 <input type="text"
                   className='form-control me-2'
-                  autofocus
+                  autoFocus
                   onBlur={handleTitleBlur} // this to return the pencil icon again after entering the input
                   onChange={handleTitleChange}
                   value={invoiceTitle}
