@@ -255,7 +255,7 @@ const InvoiceForm = () => {
                     </div>
                 </div>
             </div>
-
+            
             {/* item details */}
             <div className="mb-4">
                 <h5>Item Details</h5>
