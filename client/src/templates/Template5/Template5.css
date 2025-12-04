@@ -1,0 +1,72 @@
+.template5 {
+    max-width: 900px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.template5 .company-title {
+    color: #ea580c;
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+.template5 .invoice-title {
+    color: #ea580c;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.template5 .orange-border {
+    border-top: 3px solid #ea580c;
+    margin: 1.5rem 0;
+}
+
+.template5 .billing-box {
+    background-color: #fff7ed;
+    border: 2px solid #ea580c;
+    border-radius: 6px;
+}
+
+.template5 .billing-title {
+    color: #ea580c;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.template5 .table-header {
+    background-color: #ea580c;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.template5 .totals-box {
+    background-color: #fff7ed;
+    border: 2px solid #ea580c;
+    border-radius: 6px;
+    max-width: 300px;
+}
+
+.template5 .total-highlight {
+    color: #ea580c;
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid #ea580c;
+}
+
+.template5 table {
+    border-collapse: collapse;
+}
+
+.template5 table th,
+.template5 table td {
+    border: 1px solid #cbd5e1;
+}
+
+.template5 table tbody tr:hover {
+    background-color: #fffbeb;
+}
+

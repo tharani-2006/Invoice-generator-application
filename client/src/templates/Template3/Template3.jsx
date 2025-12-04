@@ -1,9 +1,12 @@
-import './Template2.css';
+import './Template3.css';
 import React from 'react'
 
-const Template2 = ({ data }) => {
+const Template3 = ({ data }) => {
     return (
-        <div className="template2 border rounded mx-auto my-4 px-sm-4 py-3 w-100">
+        <div className="template3 border rounded mx-auto my-4 px-sm-4 py-3 w-100 position-relative">
+            {/* Decorative wavy graphic */}
+            <div className="decorative-wave"></div>
+
             {/* Header Section */}
             <div className="row mb-4">
                 <div className="col-md-6 mb-3 mb-md-0">
@@ -35,7 +38,7 @@ const Template2 = ({ data }) => {
                 </div>
             </div>
 
-            <hr className="my-3 green-border" />
+            <hr className="my-3 purple-border" />
 
             {/* Billing section */}
             <div className="row g-3 mb-4">
@@ -81,7 +84,7 @@ const Template2 = ({ data }) => {
                                 <th className='p-2 table-header'>Item #/Item Description</th>
                                 <th className='p-2 text-center table-header'>Qty.</th>
                                 <th className='p-2 text-end table-header'>Rate</th>
-                                <th className='p-2 text-end table-header'>Amount</th>
+                                <th className='p-2 text-end table-header'>Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -103,7 +106,7 @@ const Template2 = ({ data }) => {
                 <div className="d-flex justify-content-end">
                     <div className="p-3 w-100 totals-box" style={{ maxWidth: "300px" }}>
                         <div className="d-flex justify-content-between mb-2">
-                            <span>Sub Total: </span>
+                            <span>SubTotal: </span>
                             <span>${(data.subtotal || 0).toFixed(2)}</span>
                         </div>
                         {data.tax > 0 && (
@@ -154,5 +157,5 @@ const Template2 = ({ data }) => {
     )
 }
 
-export default Template2
+export default Template3
 

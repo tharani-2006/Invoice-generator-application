@@ -8,7 +8,7 @@ const PreviewPage = () => {
 
   const previewRef = useRef()
 
-  const {selectedTemplate,invoiceData} = useContext(AppContext)
+  const {selectedTemplate, setSelectedTemplate, invoiceData} = useContext(AppContext)
 
   return (
     <div className=" previewpage container-fluid d-flex flex-column p-3 min-vh-100">
@@ -21,6 +21,7 @@ const PreviewPage = () => {
           {templates.map(({id,label}) => (
             <button
               key={id}
+              onClick={() => setSelectedTemplate(id)}
               style={{minWidth: '100px',height: '38px'}}
               className={`btn btn-small rounded-pill p-2 ${selectedTemplate === id ? 'btn-warning' : 'btn-outline-secondary'}`}
             >

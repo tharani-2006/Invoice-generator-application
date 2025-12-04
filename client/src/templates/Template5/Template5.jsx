@@ -1,9 +1,9 @@
-import './Template2.css';
+import './Template5.css';
 import React from 'react'
 
-const Template2 = ({ data }) => {
+const Template5 = ({ data }) => {
     return (
-        <div className="template2 border rounded mx-auto my-4 px-sm-4 py-3 w-100">
+        <div className="template5 border rounded mx-auto my-4 px-sm-4 py-3 w-100">
             {/* Header Section */}
             <div className="row mb-4">
                 <div className="col-md-6 mb-3 mb-md-0">
@@ -35,7 +35,7 @@ const Template2 = ({ data }) => {
                 </div>
             </div>
 
-            <hr className="my-3 green-border" />
+            <hr className="my-3 orange-border" />
 
             {/* Billing section */}
             <div className="row g-3 mb-4">
@@ -81,7 +81,7 @@ const Template2 = ({ data }) => {
                                 <th className='p-2 table-header'>Item #/Item Description</th>
                                 <th className='p-2 text-center table-header'>Qty.</th>
                                 <th className='p-2 text-end table-header'>Rate</th>
-                                <th className='p-2 text-end table-header'>Amount</th>
+                                <th className='p-2 text-end table-header'>Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -154,5 +154,5 @@ const Template2 = ({ data }) => {
     )
 }
 
-export default Template2
+export default Template5
 

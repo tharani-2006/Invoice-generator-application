@@ -1,0 +1,72 @@
+.template2 {
+    max-width: 900px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.template2 .company-title {
+    color: #059669;
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+.template2 .invoice-title {
+    color: #059669;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.template2 .green-border {
+    border-top: 3px solid #059669;
+    margin: 1.5rem 0;
+}
+
+.template2 .billing-box {
+    background-color: #ecfdf5;
+    border: 2px solid #059669;
+    border-radius: 6px;
+}
+
+.template2 .billing-title {
+    color: #059669;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.template2 .table-header {
+    background-color: #059669;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.template2 .totals-box {
+    background-color: #ecfdf5;
+    border: 2px solid #059669;
+    border-radius: 6px;
+    max-width: 300px;
+}
+
+.template2 .total-highlight {
+    color: #059669;
+    font-size: 1.1rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid #059669;
+}
+
+.template2 table {
+    border-collapse: collapse;
+}
+
+.template2 table th,
+.template2 table td {
+    border: 1px solid #cbd5e1;
+}
+
+.template2 table tbody tr:hover {
+    background-color: #f0fdf4;
+}
+

@@ -102,7 +102,7 @@ const Template1 = ({ data }) => {
             {/* Totals Section */}
             <div className="mb-4">
                 <div className="d-flex justify-content-end">
-                    <div className="p-3 w-100 totals-box" stlye={{ maxWidth: "300px" }}>
+                    <div className="p-3 w-100 totals-box" style={{ maxWidth: "300px" }}>
                         <div className="d-flex justify-content-between mb-2">
                             <span>Sub Total: </span>
                             <span>${(data.subtotal || 0).toFixed(2)}</span>
