@@ -39,7 +39,7 @@ const Template1 = ({ data }) => {
             <hr className="my-3 orange-border" />
 
             {/* Billing section */}
-            <di className="row g-3 mb-4">
+            <div className="row g-3 mb-4">
                 {data.shippingName && data.shippingAddress && data.shippingPhone && (
                     <div className="col-md-6">
                         <div className="p-3 rounded h-100 billing-box">
@@ -71,7 +71,7 @@ const Template1 = ({ data }) => {
                         </p>
                     </div>
                 </div>
-            </di>
+            </div>
 
             {/* Items Section */}
             <div className="mb-4">
@@ -105,17 +105,17 @@ const Template1 = ({ data }) => {
                     <div className="p-3 w-100 totals-box" stlye={{ maxWidth: "300px" }}>
                         <div className="d-flex justify-content-between mb-2">
                             <span>Sub Total: </span>
-                            <span>${data.subtotal.toFixed(2)}</span>
+                            <span>${(data.subtotal || 0).toFixed(2)}</span>
                         </div>
                         {data.tax > 0 && (
                             <div className="d-flex justify-content-between mb-2">
                                 <span>Tax ({data.tax}%):</span>
-                                <span>${data.taxAmount.toFixed(2)}</span>
+                                <span>${(data.taxAmount || 0).toFixed(2)}</span>
                             </div>
                         )}
                         <div className="d-flex justify-content-between fw-bold total-highlight">
                             <span>Total: </span>
-                            <span>${data.total.toFixed(2)}</span>
+                            <span>${(data.total || 0).toFixed(2)}</span>
                         </div>
                     </div>
                 </div>

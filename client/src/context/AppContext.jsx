@@ -8,7 +8,7 @@ const initialInvoiceData = {
     skipping : {name:"",phone:"",address:""},
     invoice : {number:"",date:"",dueDate:""},
     account: {name:"",number:"",ifsccode:""},
-    company: {name:"",number:"",address:""},
+    company: {name:"",phone:"",address:""},
     tax:0,
     notes: "",
     items: [

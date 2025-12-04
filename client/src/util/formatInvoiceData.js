@@ -5,7 +5,7 @@ export const formatInvoiceData = (invoiceData) => {
         invoice = {},
         account = {},
         billing = {},
-        shipping = {},
+        skipping = {},
         tax = 0,
         notes ="",
         items = [],
@@ -13,38 +13,38 @@ export const formatInvoiceData = (invoiceData) => {
     } = invoiceData || {};
 
     const currencySymbol = '$';
-    const subtotal = items.reduce((acc,item) => acc + (item.qty * item.amount) , 0);
-    const taxamount = subtotal * (tax / 100)
-    const total = subtotal + taxamount
+    const subtotal = items.reduce((acc,item) => acc + ((Number(item.qty) || 0) * (Number(item.amount) || 0)) , 0);
+    const taxAmount = subtotal * (Number(tax) / 100);
+    const total = subtotal + taxAmount;
     
     return {
         title,
-        companyName : company.name,
-        companyAddress : company.address,
-        companyPhone : company.phone,
+        companyName : company.name || "",
+        companyAddress : company.address || "",
+        companyPhone : company.phone || "",
         companyLogo: logo,
 
-        invoiceNumber : invoice.number,
-        invoiceDate : invoice.date,
-        paymentDate : invoice.dueDate,
+        invoiceNumber : invoice.number || "",
+        invoiceDate : invoice.date || "",
+        paymentDate : invoice.dueDate || "",
 
-        accountName : account.name,
-        accountNumber : account.number,
-        accountIfscCode : account.ifscCode,
+        accountName : account.name || "",
+        accountNumber : account.number || "",
+        accountIfscCode : account.ifsccode || "",
 
-        billingName : billing.name,
-        billingAddress : billing.address,
-        billingPhone : billing.phone,
+        billingName : billing.name || "",
+        billingAddress : billing.address || "",
+        billingPhone : billing.phone || "",
 
-        shippingName : shipping.name,
-        shippingAddress : shipping.address,
-        shippingPhone : shipping.phone,
+        shippingName : skipping.name || "",
+        shippingAddress : skipping.address || "",
+        shippingPhone : skipping.phone || "",
 
         currencySymbol,
         items,
-        tax,
+        tax: Number(tax) || 0,
         subtotal,
-        taxamount,
+        taxAmount,
         total,
         notes
     };

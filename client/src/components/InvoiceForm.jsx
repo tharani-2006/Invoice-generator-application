@@ -335,6 +335,7 @@ const InvoiceForm = () => {
                             type="text" 
                             className='form-control' 
                             placeholder='Account Number' 
+                            value={invoiceData.account.number || ""}
                             onChange={(e) => handleChange("account","number",e.target.value )}
                         />
                     </div>
@@ -343,6 +344,7 @@ const InvoiceForm = () => {
                             type="text" 
                             className='form-control' 
                             placeholder='Branch/IFSC Code' 
+                            value={invoiceData.account.ifsccode || ""}
                             onChange={(e) => handleChange("account","ifsccode",e.target.value )}
                         />
                     </div>
@@ -367,8 +369,8 @@ const InvoiceForm = () => {
                                 className='form-control 
                                 text-end w-50' 
                                 placeholder='2' 
-                                value={invoiceData.tax}
-                                onChange={(e) => setInvoiceData((prev) => ({...prev, tax: Number(e.target.value) }))} 
+                                value={invoiceData.tax || ""}
+                                onChange={(e) => setInvoiceData((prev) => ({...prev, tax: Number(e.target.value) || 0 }))} 
                             />
                         </div>
                         <div className="d-flex justify-content-between">

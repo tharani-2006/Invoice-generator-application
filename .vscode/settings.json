@@ -1,0 +1,9 @@
+{
+    "javascript.suggest.enabled": true,
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.useInlineCompletions": true,
+    "editor.defaultFoldingRangeProvider": "anysphere.cursor-deeplink",
+    "cursor.cpp.enablePartialAccepts": true,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+    "cursorpyright.analysis.autoImportCompletions": true
+}
