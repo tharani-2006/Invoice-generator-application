@@ -5,7 +5,7 @@ export const AppContext = createContext()
 const initialInvoiceData = {
     title : "New Invoice",
     billing : {name:"",phone:"",address:""},
-    skipping : {name:"",phone:"",address:""},
+    shipping : {name:"",phone:"",address:""},
     invoice : {number:"",date:"",dueDate:""},
     account: {name:"",number:"",ifsccode:""},
     company: {name:"",phone:"",address:""},

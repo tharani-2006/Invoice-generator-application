@@ -5,7 +5,7 @@ export const formatInvoiceData = (invoiceData) => {
         invoice = {},
         account = {},
         billing = {},
-        skipping = {},
+        shipping = {},
         tax = 0,
         notes ="",
         items = [],
@@ -36,9 +36,9 @@ export const formatInvoiceData = (invoiceData) => {
         billingAddress : billing.address || "",
         billingPhone : billing.phone || "",
 
-        shippingName : skipping.name || "",
-        shippingAddress : skipping.address || "",
-        shippingPhone : skipping.phone || "",
+        shippingName : shipping.name || "",
+        shippingAddress : shipping.address || "",
+        shippingPhone : shipping.phone || "",
 
         currencySymbol,
         items,

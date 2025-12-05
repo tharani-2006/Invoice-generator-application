@@ -1,4 +1,3 @@
-import React, { use } from 'react'
 import { useRef, useContext, useState } from 'react'
 import { AppContext } from '../context/AppContext'
 import { templates } from '../assets/assets'
@@ -7,6 +6,9 @@ import { saveInvoices } from '../services/invoiceService.js'
 import { toast } from 'react-hot-toast'
 import { Loader2 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import html2canvas from 'html2canvas'
+import { uploadInvoiceThumbnail } from '../services/cloudinaryService.js'
+
 
 const PreviewPage = () => {
 
@@ -18,22 +20,54 @@ const PreviewPage = () => {
 
   const handleSaveAndExit = async () => {
     try {
+
       setLoading(true)
-      //TODO: create thumbnail url //pending
+      
+      //to store image in cloudinary
+      const canvas = await html2canvas(previewRef.current, { //image
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#fff",
+        scrollY: -window.scrollY,
+      });
+      const imageData = canvas.toDataURL("image/png");
+      const thumbnailUrl = await uploadInvoiceThumbnail(imageData)
+
+      // Clean invoiceData: remove account field and total from items, ensure proper types
+      const { account, items, ...rest } = invoiceData
+      const cleanedInvoiceData = {
+        ...rest,
+        company: rest.company || { name: "", phone: "", address: "" },
+        billing: rest.billing || { name: "", phone: "", address: "" },
+        shipping: rest.shipping || { name: "", phone: "", address: "" },
+        invoice: rest.invoice || { number: "", date: "", dueDate: "" },
+        items: items?.map(({ total, ...item }) => ({
+          name: item.name || "",
+          qty: parseInt(item.qty) || 0,
+          amount: parseFloat(item.amount) || 0,
+          description: item.description || ""
+        })) || []
+      }
+
+      //store invoice datas in database
       const payLoad = {
-        ...invoiceData,
+        ...cleanedInvoiceData,
+        thumbnailUrl, 
         template: selectedTemplate,
       }
+
       const response = await saveInvoices(baseURL, payLoad)
+
       if (response.status === 200) {
         toast.success("Invoice saved successfully")
         navigate('/dashboard')
+
       } else {
         toast.error("Failed to save invoice")
       }
     } catch (error) {
       console.error("Error saving invoice:", error)
-      toast.error("Error saving invoice", error.message)
+      toast.error("Error saving invoice: " + (error.message || "Failed to save invoice"))
     } finally {
       setLoading(false)
     }
