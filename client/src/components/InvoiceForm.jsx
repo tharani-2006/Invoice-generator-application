@@ -32,7 +32,7 @@ const InvoiceForm = () => {
     const handleSameAsBilling = () => {
         setInvoiceData((prev) => ({
             ...prev,
-            skipping: {...prev.billing}
+            shipping: {...prev.billing}
         }))
     }
 
@@ -193,8 +193,8 @@ const InvoiceForm = () => {
                             type="text" 
                             className='form-control' 
                             placeholder='Name' 
-                            onChange={(e) => handleChange("skipping","name",e.target.value)}
-                            value={invoiceData.skipping.name}
+                            onChange={(e) => handleChange("shipping","name",e.target.value)}
+                            value={invoiceData.shipping.name}
                         />
                     </div>
                     <div className="col-md-6">
@@ -202,8 +202,8 @@ const InvoiceForm = () => {
                             type="text" 
                             className='form-control' 
                             placeholder='Phone Number' 
-                            onChange={(e) => handleChange("skipping","phone",e.target.value)}
-                            value={invoiceData.skipping.phone}
+                            onChange={(e) => handleChange("shipping","phone",e.target.value)}
+                            value={invoiceData.shipping.phone}
                         />
                     </div>
                     <div className="col-md-12">
@@ -211,8 +211,8 @@ const InvoiceForm = () => {
                             type="text" 
                             className='form-control' 
                             placeholder=' Shipping Address' 
-                            onChange={(e) => handleChange("skipping","address",e.target.value)}
-                            value={invoiceData.skipping.address}
+                            onChange={(e) => handleChange("shipping","address",e.target.value)}
+                            value={invoiceData.shipping.address}
                         />
                     </div>
                 </div>
