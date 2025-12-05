@@ -23,11 +23,14 @@ export  const AppProvider = ({ children }) => {
     const [invoiceData,setInvoiceData] = useState(initialInvoiceData)
     const [selectedTemplate,setSelectedTemplate] = useState("template1")
 
+    const baseURL = "http://localhost:9090/api"
+
     const contextValue = {
         invoiceTitle,setInvoiceTitle,
         invoiceData,setInvoiceData,
         setSelectedTemplate,selectedTemplate,
         initialInvoiceData,
+        baseURL
     }
 
     return(
