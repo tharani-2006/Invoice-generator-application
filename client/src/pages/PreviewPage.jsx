@@ -8,6 +8,8 @@ import { Loader2 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { uploadInvoiceThumbnail } from '../services/cloudinaryService.js'
+import { deleteInvoice } from '../services/invoiceService.js'
+
 
 
 const PreviewPage = () => {
@@ -72,6 +74,23 @@ const PreviewPage = () => {
       setLoading(false)
     }
   }
+  
+  const handleDelete = async () => {
+    
+    try {
+      const response = await deleteInvoice(baseURL, invoiceData.id)
+      if(response.status === 204){
+        toast.success("Invoice deleted successfully")
+        navigate('/dashboard')
+      } else {
+        toast.error("Failed to delete invoice")
+      }
+    } catch (error) {
+      console.error("Error deleting invoice:", error)
+      toast.error("Error deleting invoice: " + (error.message || "Failed to delete invoice"))
+    }
+    
+  }
 
   return (
     <div className=" previewpage container-fluid d-flex flex-column p-3 min-vh-100">
@@ -99,7 +118,7 @@ const PreviewPage = () => {
             {loading && <Loader2 className="me-2 spin-animation" size={18} />}
             {loading ? "Saving..." : "Save & Exit"}
           </button>
-          <button className="btn btn-danger">Delete Invoice</button>
+          { invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
           <button className="btn btn-secondary ">Back to Dashboard</button>
           <button className="btn btn-info">Send Mail</button>
           <button className="btn btn-success d-flex align-items-center justify-content-center">Download PDF</button>

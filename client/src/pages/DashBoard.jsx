@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const DashBoard = () => {
 
   const [invoices, setInvoices] = useState([])
-  const { baseURL, setInvoiceData, setSelectedTemplate, setInvoiceTitle } = useContext(AppContext)
+  const { baseURL, setInvoiceData, setSelectedTemplate, setInvoiceTitle, initialInvoiceData } = useContext(AppContext)
   const navigate = useNavigate()
 
   useEffect(() => {
