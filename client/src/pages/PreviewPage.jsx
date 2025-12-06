@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { uploadInvoiceThumbnail } from '../services/cloudinaryService.js'
 import { deleteInvoice } from '../services/invoiceService.js'
+import { generatePdfFromElement } from '../services/pdfUtils.js'
 
 
 
@@ -19,12 +20,13 @@ const PreviewPage = () => {
   const { selectedTemplate, setSelectedTemplate, invoiceData, baseURL } = useContext(AppContext)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const [downloading, setDownloading] = useState(false)
 
   const handleSaveAndExit = async () => {
     try {
 
       setLoading(true)
-      
+
       //to store image in cloudinary
       const canvas = await html2canvas(previewRef.current, { //image
         scale: 2,
@@ -54,7 +56,7 @@ const PreviewPage = () => {
       //store invoice datas in database
       const payLoad = {
         ...cleanedInvoiceData,
-        thumbnailUrl, 
+        thumbnailUrl,
         template: selectedTemplate,
       }
 
@@ -74,12 +76,12 @@ const PreviewPage = () => {
       setLoading(false)
     }
   }
-  
+
   const handleDelete = async () => {
-    
+
     try {
       const response = await deleteInvoice(baseURL, invoiceData.id)
-      if(response.status === 204){
+      if (response.status === 204) {
         toast.success("Invoice deleted successfully")
         navigate('/dashboard')
       } else {
@@ -89,7 +91,22 @@ const PreviewPage = () => {
       console.error("Error deleting invoice:", error)
       toast.error("Error deleting invoice: " + (error.message || "Failed to delete invoice"))
     }
-    
+
+  }
+
+  const handleDownloadPdf = async () => {
+    if (!previewRef.current) return;
+
+    try {
+      setDownloading(true);
+      await generatePdfFromElement(previewRef.current, `invoice_${Date.now()}.pdf`);
+    } catch (error) {
+      toast.error("Error generating PDF: " + (error.message || "Failed to generate PDF"));
+    }
+    finally {
+      setDownloading(false);
+    }
+
   }
 
   return (
@@ -118,10 +135,13 @@ const PreviewPage = () => {
             {loading && <Loader2 className="me-2 spin-animation" size={18} />}
             {loading ? "Saving..." : "Save & Exit"}
           </button>
-          { invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
+          {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
           <button className="btn btn-secondary ">Back to Dashboard</button>
           <button className="btn btn-info">Send Mail</button>
-          <button className="btn btn-success d-flex align-items-center justify-content-center">Download PDF</button>
+          <button className="btn btn-success d-flex align-items-center justify-content-center" disabled={loading} onClick={handleDownloadPdf}>
+            {downloading && <Loader2 className="me-2 spin-animation" size={18} />}
+            {downloading ? "Downloading..." : "Download PDF"}
+          </button>
         </div>
 
       </div>
