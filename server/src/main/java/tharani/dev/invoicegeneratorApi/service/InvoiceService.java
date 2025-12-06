@@ -19,4 +19,10 @@ public class InvoiceService {
     public List<Invoice> fetchInvoices(){
         return invoiceRepository.findAll();
     }
+
+    public void removeInvoice(String invoiceId){
+        Invoice existingInvoice = invoiceRepository.findById(invoiceId)
+                .orElseThrow(() -> new RuntimeException("Invoice not found: " + invoiceId));
+        invoiceRepository.delete(existingInvoice);
+    }
 }
