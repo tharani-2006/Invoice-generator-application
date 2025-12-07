@@ -12,6 +12,11 @@ export const deleteInvoice = (baseURL, id) => {
     return axios.delete(`${baseURL}/invoices/${id}`)
 }
 
-export const sendInvoice = (baseURL, FormData) => {
-    return axios.post(`${baseURL}/invoices/sendinvoice`, FormData)
+export const sendInvoice = (baseURL, formData) => {
+    return axios.post(`${baseURL}/invoices/sendinvoice`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+        timeout: 30000, // 30 seconds timeout
+    })
 }
