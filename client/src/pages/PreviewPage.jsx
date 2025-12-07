@@ -5,7 +5,7 @@ import InvoicePreview from '../components/InvoicePreview'
 import { saveInvoices } from '../services/invoiceService.js'
 import { toast } from 'react-hot-toast'
 import { Loader2 } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useBlocker, useNavigate } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { uploadInvoiceThumbnail } from '../services/cloudinaryService.js'
 import { deleteInvoice } from '../services/invoiceService.js'
@@ -21,6 +21,7 @@ const PreviewPage = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const [downloading, setDownloading] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const handleSaveAndExit = async () => {
     try {
@@ -137,7 +138,7 @@ const PreviewPage = () => {
           </button>
           {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
           <button className="btn btn-secondary ">Back to Dashboard</button>
-          <button className="btn btn-info">Send Mail</button>
+          <button className="btn btn-info" onClick={() => setShowModal(true)}>Send Mail</button>
           <button className="btn btn-success d-flex align-items-center justify-content-center" disabled={loading} onClick={handleDownloadPdf}>
             {downloading && <Loader2 className="me-2 spin-animation" size={18} />}
             {downloading ? "Downloading..." : "Download PDF"}
@@ -154,6 +155,27 @@ const PreviewPage = () => {
         </div>
 
       </div>
+
+      {showModal && ( // modal means popup box
+        <div className="modal d-block" tabIndex="-1" role='dialog' style={{backgroundColor: "rgba(0,0,0,0.5)"}} >
+          <div className="modal-dialog" role='document' >
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Sent Invoice</h5>
+                <button type="button" className="btn-close" onClick={() => setShowModal(false)} >
+                </button>
+              </div>
+              <div className="modal-body">
+                <input type="email" className='form-control' placeholder='Customer email' />
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary">Send</button>
+                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)} >Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   )
