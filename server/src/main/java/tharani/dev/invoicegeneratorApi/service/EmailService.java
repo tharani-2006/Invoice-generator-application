@@ -21,15 +21,24 @@ public class EmailService {
     private String fromEmail;
 
     public void sendInvoiceEmail(String toEmail, MultipartFile file) throws MessagingException, IOException {
+        if (toEmail == null || toEmail.trim().isEmpty()) {
+            throw new IllegalArgumentException("Recipient email address cannot be empty");
+        }
+        
+        if (file == null || file.isEmpty()) {
+            throw new IllegalArgumentException("File attachment cannot be empty");
+        }
+        
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
         helper.setFrom(fromEmail);
-        helper.setTo(toEmail);
+        helper.setTo(toEmail.trim());
         helper.setSubject("Your Invoice");
         helper.setText("Dear customer, \n\nPlease find attached your Invoice. \n\nThank You!");
 
-        helper.addAttachment(file.getOriginalFilename(), new ByteArrayResource(file.getBytes()));
+        String fileName = "invoice_"+System.currentTimeMillis()+".pdf";
+        helper.addAttachment(fileName, new ByteArrayResource(file.getBytes()));
 
         mailSender.send(message);
     }

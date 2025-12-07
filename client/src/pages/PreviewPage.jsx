@@ -169,7 +169,7 @@ const PreviewPage = () => {
             {loading ? "Saving..." : "Save & Exit"}
           </button>
           {invoiceData.id && <button className="btn btn-danger" onClick={handleDelete}>Delete Invoice</button>}
-          <button className="btn btn-secondary ">Back to Dashboard</button>
+          <button className="btn btn-secondary" onClick={() => navigate('/dashboard')} >Back to Dashboard</button>
           <button className="btn btn-info" onClick={() => setShowModal(true)}>Send Mail</button>
           <button className="btn btn-success d-flex align-items-center justify-content-center" disabled={loading} onClick={handleDownloadPdf}>
             {downloading && <Loader2 className="me-2 spin-animation" size={18} />}
