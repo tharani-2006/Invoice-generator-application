@@ -10,13 +10,12 @@ import tharani.dev.invoicegeneratorApi.entity.Invoice;
 import tharani.dev.invoicegeneratorApi.service.EmailService;
 import tharani.dev.invoicegeneratorApi.service.InvoiceService;
 
-import java.io.IOException;
 import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/invoices")
-@CrossOrigin("*")
 public class InvoiceController {
     private final InvoiceService invoiceService;
     private final EmailService emailService;
