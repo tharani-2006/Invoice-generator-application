@@ -2,10 +2,12 @@ package tharani.dev.invoicegeneratorApi.controller;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import tharani.dev.invoicegeneratorApi.entity.Invoice;
 import tharani.dev.invoicegeneratorApi.service.EmailService;
 import tharani.dev.invoicegeneratorApi.service.InvoiceService;
@@ -26,13 +28,16 @@ public class InvoiceController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Invoice>> fetchInvoices(){
-        return ResponseEntity.ok(invoiceService.fetchInvoices());
+    public ResponseEntity<List<Invoice>> fetchInvoices(Authentication authentication){
+        return ResponseEntity.ok(invoiceService.fetchInvoices(authentication.getName()));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removeInvoice(@PathVariable String id){
-        invoiceService.removeInvoice(id);
-        return  ResponseEntity.noContent().build();
+    public ResponseEntity<Void> removeInvoice(@PathVariable String id,Authentication authentication){
+        if(authentication.getName() != null){
+            invoiceService.removeInvoice(id, authentication.getName());
+            return ResponseEntity.noContent().build();
+        }
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User does not have permission to access this resource");
     }
     @PostMapping("/sendinvoice")
     public ResponseEntity<?> sendInvoice(@RequestPart("file") MultipartFile file,
