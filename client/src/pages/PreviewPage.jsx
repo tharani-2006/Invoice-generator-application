@@ -1,4 +1,4 @@
-import { useRef, useContext, useState } from 'react'
+import { useRef, useContext, useState, useEffect } from 'react'
 import { AppContext } from '../context/AppContext'
 import { templates } from '../assets/assets'
 import InvoicePreview from '../components/InvoicePreview'
@@ -10,7 +10,8 @@ import html2canvas from 'html2canvas'
 import { uploadInvoiceThumbnail } from '../services/cloudinaryService.js'
 import { deleteInvoice } from '../services/invoiceService.js'
 import { generatePdfFromElement } from '../services/pdfUtils.js'
-
+import { useAuth } from '@clerk/clerk-react'
+import { useUser } from '@clerk/clerk-react'
 
 
 const PreviewPage = () => {
@@ -24,6 +25,8 @@ const PreviewPage = () => {
   const [showModal, setShowModal] = useState(false)
   const [customerEmail, setCustomerEmail] = useState("")
   const [emailing, setEmailing] = useState(false)
+  const {getToken} = useAuth()
+  const {user} = useUser()
 
   const handleSaveAndExit = async () => {
     try {
@@ -59,11 +62,14 @@ const PreviewPage = () => {
       //store invoice datas in database
       const payLoad = {
         ...cleanedInvoiceData,
+        clerkId: user.id,
         thumbnailUrl,
         template: selectedTemplate,
       }
 
-      const response = await saveInvoices(baseURL, payLoad)
+      const token = await getToken()
+
+      const response = await saveInvoices(baseURL, payLoad, token)
 
       if (response.status === 200) {
         toast.success("Invoice saved successfully")
@@ -83,7 +89,8 @@ const PreviewPage = () => {
   const handleDelete = async () => {
 
     try {
-      const response = await deleteInvoice(baseURL, invoiceData.id)
+      const token = await getToken()
+      const response = await deleteInvoice(baseURL, invoiceData.id, token)
       if (response.status === 204) {
         toast.success("Invoice deleted successfully")
         navigate('/dashboard')
@@ -124,7 +131,8 @@ const PreviewPage = () => {
       formData.append("file", pdfBlob, "invoice.pdf");
       formData.append("email", customerEmail);
 
-      const response = await sendInvoice(baseURL, formData);
+      const token = await getToken()
+      const response = await sendInvoice(baseURL, formData, token);
 
       if (response.status === 200) {
         toast.success("Email sent successfully");
@@ -141,6 +149,13 @@ const PreviewPage = () => {
       setEmailing(false);
     }
   }
+
+  useEffect(() => {
+    if(!invoiceData || !invoiceData.items?.length){
+      toast.error("No invoice data found. Redirecting to dashboard.");
+      navigate('/dashboard');
+    }
+  },[invoiceData, navigate]);
 
   return (
     <div className=" previewpage container-fluid d-flex flex-column p-3 min-vh-100">

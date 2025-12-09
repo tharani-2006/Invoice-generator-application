@@ -2,7 +2,7 @@ package tharani.dev.invoicegeneratorApi.controller;
 
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class InvoiceController {
             invoiceService.removeInvoice(id, authentication.getName());
             return ResponseEntity.noContent().build();
         }
-        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User does not have permission to access this resource");
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, " ");
     }
     @PostMapping("/sendinvoice")
     public ResponseEntity<?> sendInvoice(@RequestPart("file") MultipartFile file,
