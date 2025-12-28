@@ -21,7 +21,6 @@
 
 <img width="1842" height="958" alt="image" src="https://github.com/user-attachments/assets/4871ade9-3679-4a27-8227-acd061c1c2d4" />
 <img width="1850" height="972" alt="Screenshot 2025-12-28 223215" src="https://github.com/user-attachments/assets/efc9571b-ec38-4d13-b623-996d42b51b70" />
-<img width="766" height="708" alt="Screenshot 2025-11-28 114147" src="https://github.com/user-attachments/assets/6078af37-37fe-4f87-b6d4-2dd1451f82f2" />
 
 ---
 
