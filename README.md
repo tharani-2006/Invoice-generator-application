@@ -1,4 +1,4 @@
-# Invoice Generator
+<h1 align="center">Invoice Generator</h1>
 
 <div align="center">
 
@@ -14,6 +14,14 @@
 [Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [API Reference](#-api-reference) • [Contributing](#-contributing)
 
 </div>
+
+---
+
+### 📄 PDF Invoice Preview
+
+<img width="1842" height="958" alt="image" src="https://github.com/user-attachments/assets/4871ade9-3679-4a27-8227-acd061c1c2d4" />
+<img width="1850" height="972" alt="Screenshot 2025-12-28 223215" src="https://github.com/user-attachments/assets/efc9571b-ec38-4d13-b623-996d42b51b70" />
+<img width="766" height="708" alt="Screenshot 2025-11-28 114147" src="https://github.com/user-attachments/assets/6078af37-37fe-4f87-b6d4-2dd1451f82f2" />
 
 ---
 
@@ -169,7 +177,7 @@ Invoice Generator is a comprehensive, production-ready application designed for 
 
 ---
 
-## 🏗️ System Architecture
+<h2 align="center">🏗️ System Architecture</h2>
 
 ### Architecture Overview
 
@@ -1256,7 +1264,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email support@example.com or create an issue in the repository.
+For support, email tharaniprakashp2006@gmail.com or create an issue in the repository.
 
 ---
 
@@ -1268,7 +1276,7 @@ If you find this project useful, please consider giving it a star!
 
 <div align="center">
 
-**Made with ❤️ by [Your Name]**
+<b>Made with ❤️ by tharani-2006</b>
 
 [⬆ Back to Top](#invoice-generator)
 
