@@ -374,12 +374,6 @@ Before you begin, ensure you have the following installed:
 - **Cloudinary Account**: [cloudinary.com](https://cloudinary.com/) - For image storage
 - **Brevo Account**: [brevo.com](https://www.brevo.com/) - For email service
 
-### System Requirements
-
-- **RAM**: Minimum 4GB, Recommended 8GB
-- **Disk Space**: Minimum 2GB free space
-- **OS**: Windows 10+, macOS 10.15+, or Linux (Ubuntu 20.04+)
-
 ---
 
 ## 🚀 Installation
