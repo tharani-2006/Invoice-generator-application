@@ -24,7 +24,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#-overview)
 - [Features](#-features)
@@ -53,7 +53,7 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 Invoice Generator is a comprehensive, production-ready application designed for businesses and freelancers to streamline their invoicing process. The application provides an intuitive interface for creating professional invoices, managing invoice history, and automating invoice delivery to clients.
 
@@ -76,43 +76,43 @@ Invoice Generator is a comprehensive, production-ready application designed for 
 
 ---
 
-## ✨ Features
+## Features
 
 ### Core Features
 
-- **📄 Multiple Invoice Templates**
+- ** Multiple Invoice Templates**
   - Five professionally designed, customizable templates
   - Real-time template switching without data loss
   - Responsive design for all screen sizes
 
-- **👁️ Real-time Preview**
+- ** Real-time Preview**
   - Live preview of invoice as you type
   - Instant template switching
   - WYSIWYG editing experience
 
-- **📥 PDF Generation**
+- ** PDF Generation**
   - Client-side PDF generation using jsPDF and html2canvas
   - High-quality PDF output with proper formatting
   - Customizable file naming
 
-- **📧 Email Integration**
+- ** Email Integration**
   - Send invoices directly to customers via email
   - PDF attachments automatically included
   - Professional email templates
 
-- **💾 Invoice Management**
+- ** Invoice Management**
   - Save invoices to MongoDB database
   - View all invoices in dashboard grid
   - Update and delete invoices
   - Search and filter capabilities
 
-- **🔐 User Authentication**
+- ** User Authentication**
   - Secure authentication via Clerk
   - JWT-based authorization
   - User profile management
   - Webhook integration for user lifecycle events
 
-- **☁️ Cloud Storage**
+- ** Cloud Storage**
   - Invoice thumbnails stored in Cloudinary
   - Fast dashboard loading with optimized images
   - Automatic image optimization
@@ -129,7 +129,7 @@ Invoice Generator is a comprehensive, production-ready application designed for 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -176,7 +176,7 @@ Invoice Generator is a comprehensive, production-ready application designed for 
 
 ---
 
-<h2 align="center">🏗️ System Architecture</h2>
+<h2 align="center"> System Architecture</h2>
 
 ### Architecture Overview
 
@@ -263,7 +263,7 @@ sequenceDiagram
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Invoice-generator-application/
@@ -346,7 +346,7 @@ Invoice-generator-application/
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -376,7 +376,7 @@ Before you begin, ensure you have the following installed:
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Step 1: Clone the Repository
 
@@ -427,7 +427,7 @@ mongosh
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Backend Configuration
 
@@ -495,7 +495,7 @@ upload_preset: "YOUR_UPLOAD_PRESET"
 
 ---
 
-## 🏃 Running the Application
+## Running the Application
 
 ### Development Mode
 
@@ -537,7 +537,7 @@ npm run build
 
 ---
 
-## 📡 API Reference
+## API Reference
 
 ### Base URL
 
@@ -709,7 +709,7 @@ svix-signature: <signature>
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Invoice Collection
 
@@ -787,7 +787,7 @@ db.users.createIndex({ "clerkId": 1 }, { unique: true })
 
 ---
 
-## 📄 Invoice Workflow
+## Invoice Workflow
 
 ### Complete Invoice Generation Process
 
@@ -842,7 +842,7 @@ db.users.createIndex({ "clerkId": 1 }, { unique: true })
 
 ---
 
-## 💻 Development
+## Development
 
 ### Development Workflow
 
@@ -881,7 +881,7 @@ db.users.createIndex({ "clerkId": 1 }, { unique: true })
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Backend Testing
 
@@ -910,7 +910,7 @@ npm test
 
 ---
 
-## 🚢 Deployment
+## Deployment
 
 ### Backend Deployment
 
@@ -978,7 +978,7 @@ Update all configuration files with production values:
 
 ---
 
-## 🔒 Security
+## Security
 
 ### Authentication & Authorization
 
@@ -1006,7 +1006,7 @@ Update all configuration files with production values:
 
 ---
 
-## ⚡ Performance
+## Performance
 
 ### Optimization Strategies
 
@@ -1036,7 +1036,7 @@ Update all configuration files with production values:
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -1104,7 +1104,7 @@ logging.level.tharani.dev=DEBUG
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these guidelines:
 
@@ -1137,7 +1137,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ---
 
-## ❓ FAQ
+## FAQ
 
 ### General Questions
 
@@ -1169,7 +1169,7 @@ A: Yes, but you'll need to modify the security configuration and JWT validation 
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 ### Planned Features
 
@@ -1209,7 +1209,7 @@ A: Yes, but you'll need to modify the security configuration and JWT validation 
 
 ---
 
-## 📝 Changelog
+## Changelog
 
 ### [1.0.0] - 2024-01-15
 
@@ -1230,13 +1230,13 @@ A: Yes, but you'll need to modify the security configuration and JWT validation 
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👥 Credits
+## Credits
 
 ### Technologies Used
 
@@ -1255,13 +1255,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
+## Support
 
 For support, email tharaniprakashp2006@gmail.com or create an issue in the repository.
 
 ---
 
-## 🌟 Star History
+## Star History
 
 If you find this project useful, please consider giving it a star!
 
