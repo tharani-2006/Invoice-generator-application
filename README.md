@@ -408,22 +408,6 @@ cd ../client
 npm install
 ```
 
-### Step 4: Database Setup
-
-```bash
-# Start MongoDB service
-# Windows (as Administrator):
-net start MongoDB
-
-# macOS (using Homebrew):
-brew services start mongodb-community
-
-# Linux:
-sudo systemctl start mongod
-
-# Verify MongoDB is running
-mongosh
-```
 
 ---
 
